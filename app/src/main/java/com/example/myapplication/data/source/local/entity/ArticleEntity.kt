@@ -1,16 +1,22 @@
 package com.example.myapplication.data.source.local.entity
 
+import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "newsentities")
 data class ArticleEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
+    @ColumnInfo(name = "id")
+    var id: Int = 0,
+
     @ColumnInfo(name = "title")
-    var title: String,
+    var title: String ?= null,
 
     @ColumnInfo(name = "publishedAt")
     var publishedAt: String? = null,
@@ -32,4 +38,4 @@ data class ArticleEntity(
 
     @ColumnInfo(name = "bookmarked")
     var bookmarked: Boolean = false,
-)
+) : Parcelable

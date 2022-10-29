@@ -7,6 +7,7 @@ import com.example.myapplication.data.source.remote.ApiResponse
 import com.example.myapplication.data.source.remote.RemoteDataSource
 import com.example.myapplication.data.source.remote.response.ArticlesItem
 import com.example.myapplication.utils.AppExecutors
+import com.example.myapplication.utils.DataMapper
 import com.example.myapplication.vo.Resource
 
 class NewsRepository private constructor(
@@ -43,17 +44,7 @@ class NewsRepository private constructor(
             override fun saveCallResult(data: List<ArticlesItem>) {
                 val newsList = ArrayList<ArticleEntity>()
                 for (response in data) {
-                    val news = ArticleEntity(
-                        response.title!!,
-                        response.publishedAt,
-                        response.author,
-                        response.urlToImage,
-                        response.description,
-                        response.url,
-                        response.content,
-                        false
-                    )
-                    newsList.add(news)
+                    newsList.add(DataMapper.mapperArticle(response))
                 }
                 localDataSource.insertNews(newsList)
             }

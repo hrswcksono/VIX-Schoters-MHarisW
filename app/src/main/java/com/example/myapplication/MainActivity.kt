@@ -22,16 +22,15 @@ class MainActivity : AppCompatActivity() {
 
         navView = binding.navView
 
-//        supportActionBar?.hide()
-
         val navController = findNavController(R.id.nav_host)
 
         appBarConfiguration = AppBarConfiguration.Builder(
             R.id.home_nav,
-            R.id.bookmark_nav
+            R.id.bookmark_nav,
+            R.id.profile_nav
         ).build()
 
-        setupActionBarWithNavController(navController)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }

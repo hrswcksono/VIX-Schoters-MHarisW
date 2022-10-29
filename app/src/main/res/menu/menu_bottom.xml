@@ -9,4 +9,8 @@
         android:id="@+id/bookmark_nav"
         android:icon="@drawable/ic_baseline_bookmark_24"
         android:title="@string/title_bookmark" />
+    <item
+        android:id="@+id/profile_nav"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="@string/title_profile" />
 </menu>

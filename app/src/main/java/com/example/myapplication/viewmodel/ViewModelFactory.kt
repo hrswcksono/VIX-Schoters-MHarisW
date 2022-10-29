@@ -7,6 +7,7 @@ import com.example.myapplication.data.NewsDataSource
 import com.example.myapplication.data.NewsRepository
 import com.example.myapplication.di.Injection
 import com.example.myapplication.ui.bookmark.BookmarkViewModel
+import com.example.myapplication.ui.detail.DetailViewModel
 import com.example.myapplication.ui.home.HomeViewModel
 
 class ViewModelFactory private constructor(private val newsRepository: NewsRepository) : ViewModelProvider.NewInstanceFactory() {
@@ -30,6 +31,9 @@ class ViewModelFactory private constructor(private val newsRepository: NewsRepos
             }
             modelClass.isAssignableFrom(BookmarkViewModel::class.java) -> {
                 BookmarkViewModel(newsRepository) as T
+            }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(newsRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

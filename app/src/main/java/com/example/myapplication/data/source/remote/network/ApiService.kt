@@ -6,6 +6,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface ApiService {
-    @GET("top-headlines?country=us&category=business&apiKey=${BuildConfig.API_KEY}")
+    @GET("everything?domains=wsj.com&apiKey=${BuildConfig.API_KEY}")
     fun getList(): Call<NewsResponse>
 }
